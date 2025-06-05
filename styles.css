@@ -1,0 +1,3019 @@
+/* Глобальные стили */
+:root {
+    --primary-color: #e9414c;
+    --secondary-color: #d02c39;
+    --text-color: #333;
+    --light-text: #fff;
+    --gray-bg: #f8f8f8;
+    --dark-bg: #1a1a1a;
+    --card-bg: #ffffff;
+    --shadow: 0 5px 20px rgba(227, 6, 19, 0.1);
+    --transition: all 0.3s ease;
+    --cubic-bezier: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Стили для логотипа в футере - цветовое разделение */
+.white-text {
+    color: #fff;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: #fff;
+}
+
+/* Плавная прокрутка для всего сайта */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Современный фон для всего сайта */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('assets/background.png');
+    background-size: cover; /* чтобы изображение занимало весь экран */
+    background-position: center center; /* центрировать изображение */
+    background-attachment: fixed; /* фиксированный фон при скролле */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Плавное появление элементов при скролле */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+    transition: opacity 0.4s var(--cubic-bezier), transform 0.4s var(--cubic-bezier), visibility 0.4s;
+    will-change: opacity, transform, visibility;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Современный градиентный фон для секций */
+.about-section, .stars-section, .benefits-section, .programs-section {
+    position: relative;
+    z-index: 1 !important;
+}
+
+.stars-section::before, .benefits-section::before, .programs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.04;
+    background-image: radial-gradient(var(--primary-color) 0.5px, transparent 0.5px), radial-gradient(var(--secondary-color) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+/* Отдельный стиль для секции "О нас" без фонового узора */
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: none; /* Убираем узор */
+}
+
+/* Улучшенная анимация для заголовков */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 15px;
+    background: linear-gradient(90deg, var(--text-color), var(--primary-color), var(--text-color));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Карточки с эффектом 3D при наведении */
+.star-card, .program-card, .benefit-card {
+    transition: transform 0.5s var(--cubic-bezier), box-shadow 0.5s var(--cubic-bezier);
+    will-change: transform, box-shadow;
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+}
+
+.star-card:hover, .program-card:hover, .benefit-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) translateY(-5px);
+}
+
+/* Эффект для кнопок */
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s var(--cubic-bezier);
+    z-index: 1;
+}
+
+.btn-primary::after, .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transition: transform 0.8s var(--cubic-bezier);
+    z-index: -1;
+    transform: scale(0);
+    transform-origin: center;
+}
+
+.btn-primary:hover::after, .btn-secondary:hover::after {
+    transform: scale(1);
+}
+
+/* Современная анимация для секции "О нас" */
+.about-section {
+    position: relative;
+    z-index: 10 !important; /* Ниже, чем у формы заказа */
+    background-color: #ffffff; /* Делаем фон таким же как у формы */
+    padding: 60px 0;
+    margin-bottom: 0;
+    border-top: none; /* Убираем верхнюю границу */
+    border-bottom: 1px solid rgba(233, 65, 76, 0.1);
+    box-shadow: none; /* Убираем тень */
+    overflow: visible;
+    margin-top: 0 !important;
+}
+
+/* Убираем разделительную линию после секции "О нас" */
+.about-section::after {
+    display: none; /* Полностью скрываем элемент */
+}
+
+/* Улучшенная навигация между секциями */
+.nav-links a {
+    font-weight: 600;
+    font-size: 15px;
+    transition: var(--transition);
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Плавные интерактивные вкладки для программ */
+.programs-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.programs-container.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Prevent layout shift */
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Кнопки */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-text);
+    padding: 14px 34px;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    will-change: transform; /* Оптимизирует анимацию */
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(45deg, #ff424f, #e5343f);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: #fff;
+    color: var(--primary-color);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    transition: var(--transition);
+    cursor: pointer;
+    will-change: transform, background, color; /* Оптимизирует анимацию */
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Шапка и навигация */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999 !important; /* Максимально высокий z-index с !important */
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.4s var(--cubic-bezier), background-color 0.4s var(--cubic-bezier);
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    padding: 10px 0;
+}
+
+nav .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.logo {
+    padding: 5px 0;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+.logo a:hover {
+    transform: scale(1.05);
+}
+
+.logo span {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 15px;
+    transition: var(--transition);
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Анимированный текст */
+.animated-text {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    font-size: 7rem; /* Очень большой размер шрифта */
+    font-weight: 900; /* Максимальная жирность */
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+    /* Очень яркий контрастный градиент */
+    background: linear-gradient(
+        135deg, 
+        #ffffff 0%,
+        #ff1e00 30%, 
+        #ff0000 50%, 
+        #ff1e00 70%, 
+        #ffffff 100%
+    );
+    background-size: 200% auto;
+    animation: shimmerText 4s infinite linear, pulsate 2s infinite ease-in-out;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 100%; /* Максимальная ширина */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    /* Интенсивная тень с красным свечением */
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
+}
+
+/* Анимация пульсации */
+@keyframes pulsate {
+    0% { transform: scale(1); text-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.8); }
+    50% { transform: scale(1.05); text-shadow: 0 15px 40px rgba(255, 0, 0, 0.8), 0 5px 15px rgba(255, 0, 0, 0.6); }
+    100% { transform: scale(1); text-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.8); }
+}
+
+/* Анимация яркого градиента */
+@keyframes shimmerText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animated-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.8s ease-out forwards, shimmerText 4s infinite linear, pulsate 2s infinite ease-in-out;
+}
+
+/* Простая анимация появления */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Убираем декоративные элементы */
+.animated-text::before,
+.animated-text::after {
+    display: none;
+}
+
+.hero-content .btn-primary {
+    font-size: 1.3rem;
+    padding: 16px 36px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #e9414c, #d62828);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
+}
+
+.hero-content .btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, #ff424f, #c71f37);
+}
+
+.hero-content .btn-primary:active {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Бургер меню для мобильных */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px;
+    transition: var(--transition);
+}
+
+/* Главный баннер */
+#hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0; /* Убираем нижний отступ */
+    /* Убираем статический фон, чтобы было видно видео */
+    background: none;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    display: block; /* Восстанавливаем отображение видео */
+}
+
+.video-container video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Усиливаем затемнение для лучшей видимости текста */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    width: 90%;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Усиливаем тень для повышения контрастности */
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 30px;
+    opacity: 1; 
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); /* Усиливаем тень для повышения контрастности */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.hero-content .btn-primary {
+    font-size: 1.2rem;
+    padding: 16px 36px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Секции сайта */
+section {
+    padding: 60px 0;
+    position: relative;
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+}
+
+/* Улучшенная стилизация формы заказа */
+.quick-form {
+    position: relative;
+    z-index: 20;
+    background: none !important; /* Сбрасываем любой существующий фон */
+    background-color: transparent !important;
+    padding: 60px 0 120px 0;
+    margin-bottom: 0 !important;
+    box-shadow: none;
+    border-bottom: none;
+}
+
+/* Добавляем фоновое изображение через псевдоэлемент для большей надежности */
+.quick-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/background.jpg') !important; /* Явно указываем путь с ./ */
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: 1 !important; /* Полная непрозрачность */
+    z-index: -2 !important; /* Под контентом формы */
+}
+
+/* Добавляем полупрозрачный слой поверх фона */
+.quick-form::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: -1 !important; /* Под контентом формы, но над фоном */
+}
+
+.form-container {
+    position: relative;
+    z-index: 999 !important;
+    overflow: visible !important;
+    max-width: 650px; /* Увеличиваем ширину контейнера */
+    margin: 0 auto 40px auto; /* Уменьшаем нижний отступ */
+    background: #fff;
+    padding: 40px; /* Уменьшаем внутренние отступы */
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+    transition: transform 0.5s var(--cubic-bezier), box-shadow 0.4s var(--cubic-bezier);
+    will-change: transform, box-shadow;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+}
+
+.form-container:focus-within {
+    box-shadow: 0 15px 50px rgba(233, 65, 76, 0.15);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.form-container h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+/* Улучшенные поля формы */
+.form-group {
+    margin-bottom: 35px; /* Увеличиваем отступ между группами формы */
+    position: relative;
+    z-index: auto;
+    overflow: visible !important;
+}
+
+/* Специальные z-index для выпадающих списков */
+/* Первый селект (звезда) должен иметь более высокий z-index, чем второй */
+.form-group:nth-child(3) {
+    z-index: 32;  /* Выбор звезды - выше */
+}
+
+.form-group:nth-child(4) {
+    z-index: 31;  /* Выбор программы - ниже, чем звезда, но выше чем остальное */
+}
+
+/* Полностью переработанные стили для инпутов и селектов */
+input, select {
+    width: 100%;
+    padding: 15px 20px;
+    padding-right: 50px;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 0.3s var(--cubic-bezier);
+    background-color: #fafafa;
+    color: #333;
+    appearance: none; /* Убираем стандартный вид селекта в браузере */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+    height: 56px; /* Фиксированная высота для предотвращения дрожания */
+}
+
+/* Кастомные стили для выпадающих списков */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e9414c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+/* Стилизация вариантов выпадающих списков */
+select option {
+    padding: 15px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Стилизация для Firefox */
+select::-moz-focus-inner {
+    border: 0;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+/* Стилизация для Chrome и Edge */
+select:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Кастомная стилизация выпадающего списка для разных браузеров */
+@-moz-document url-prefix() {
+    select {
+        text-indent: 0.01px;
+        text-overflow: '';
+        padding-right: 50px;
+    }
+}
+
+/* Улучшаем отображение выпадающих списков в современных браузерах */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select:focus {
+        outline: none;
+    }
+    
+    select option {
+        border: none;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    select option:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+}
+
+/* Удаляем анимации, которые могут вызывать дрожание */
+.form-group:focus-within input,
+.form-group:focus-within select {
+    animation: none;
+}
+
+/* Заменяем анимацию плавным переходом */
+.form-group:focus-within {
+    transform: translateY(-2px);
+    transition: transform 0.3s var(--cubic-bezier);
+    z-index: 40;
+}
+
+/* Скрываем иконки в полях формы */
+.form-icon {
+    display: none !important;
+}
+
+/* Заменяем анимацию иконок на более плавную */
+@keyframes selectChanged {
+    0% { transform: translateY(-50%); }
+    50% { transform: translateY(-50%); color: var(--secondary-color); }
+    100% { transform: translateY(-50%); }
+}
+
+/* Создаем красивую кастомную стилизацию для селектов на разных платформах */
+@supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
+    select {
+        padding-right: 50px;
+    }
+    
+    select option {
+        padding: 12px 16px;
+        margin: 4px 0;
+        transition: all 0.2s;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    
+    select option:checked {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        font-weight: bold;
+    }
+}
+
+/* Уменьшаем дрожание при выборе опций */
+.form-success {
+    animation: none; /* Убираем анимацию, которая может вызывать дрожание */
+    transform: translateY(0); /* Устанавливаем постоянное положение */
+    transition: box-shadow 0.4s var(--cubic-bezier); /* Оставляем только переход тени */
+}
+
+/* Стили для полей с ошибками */
+input:invalid:not(:placeholder-shown),
+select:invalid:not(:focus):not([value=""]) {
+    border-color: #a4161a;
+    background-color: rgba(164, 22, 26, 0.05);
+}
+
+.form-group input:invalid:not(:placeholder-shown) ~ .form-icon,
+.form-group select:invalid:not(:focus):not([value=""]) ~ .form-icon {
+    color: #a4161a;
+}
+
+/* Стили для сообщений об ошибках */
+.error-message {
+    display: none;
+    color: #a4161a;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Специфические стили для ошибок полей */
+.field-error {
+    color: #a4161a;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+    display: none;
+}
+
+/* Стиль для полей с ошибками */
+input.error, select.error {
+    border-color: #a4161a !important;
+    background-color: rgba(164, 22, 26, 0.05) !important;
+}
+
+/* Дополнительный визуальный индикатор для полей с ошибками */
+input.error:focus, select.error:focus {
+    box-shadow: 0 0 0 3px rgba(164, 22, 26, 0.1) !important;
+}
+
+/* Улучшенная кнопка отправки формы */
+.quick-form .btn-primary {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transition: all 0.3s var(--cubic-bezier);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px -10px var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.quick-form .btn-primary i {
+    transition: transform 0.3s var(--cubic-bezier);
+}
+
+.quick-form .btn-primary:hover i {
+    transform: translateX(5px);
+}
+
+.quick-form .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.quick-form .btn-primary:hover::before {
+    left: 100%;
+}
+
+.quick-form .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(51, 51, 51, 0.5);
+    background: #333333 !important; /* Меняем на черный цвет при наведении */
+}
+
+.quick-form .btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px -5px var(--secondary-color);
+}
+
+/* Дополнительные стили для формы */
+.field-focus {
+    position: relative;
+    z-index: 2;
+}
+
+.field-active input,
+.field-active select {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Анимация успешной отправки формы */
+.form-success {
+    animation: formSuccess 0.6s var(--cubic-bezier);
+}
+
+@keyframes formSuccess {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Анимация для иконок при выборе */
+.select-changed {
+    animation: selectChanged 0.6s var(--cubic-bezier);
+}
+
+/* Стили для объединения блоков "Заказать выступление" и "Кто мы такие" */
+.quick-form + .about-section {
+    padding-top: 60px; /* Добавляем верхний отступ у блока "Кто мы такие" */
+}
+
+/* Обновляем заголовок раздела "Кто мы такие" */
+.about-section .section-title {
+    margin-top: 30px; /* Отступ сверху для заголовка */
+}
+
+/* Создаем визуальное соединение блоков */
+.quick-form::after {
+    display: none; /* Убираем возможные разделители */
+}
+
+/* Убираем все возможные разделители */
+.quick-form, .about-section {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Устанавливаем правильные позиции в конце файла */
+
+/* Секция со звездами */
+.stars-section {
+    padding: 60px 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.stars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.star-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    will-change: transform; /* Оптимизирует анимацию */
+}
+
+.star-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.star-card.active {
+    border: 3px solid var(--primary-color);
+}
+
+.star-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+    will-change: transform; /* Оптимизирует анимацию */
+}
+
+.star-card:hover .star-image img {
+    transform: scale(1.05);
+}
+
+.star-hover {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.star-card:hover .star-hover {
+    bottom: 0;
+    opacity: 1;
+}
+
+.star-card h3 {
+    padding: 20px 20px 10px;
+    font-size: 1.5rem;
+}
+
+.star-card p {
+    padding: 0 20px 20px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Секция с программами */
+.programs-section {
+    background-color: var(--gray-bg);
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+    position: relative;
+    z-index: 10; /* Ниже чем у формы заказа */
+    padding: 60px 0;
+}
+
+.programs-container {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.programs-container.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+.star-name {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.programs-note {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.program-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: all 0.5s var(--cubic-bezier);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-bottom: 3px solid transparent;
+    will-change: transform; /* Оптимизирует анимацию */
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(233, 65, 76, 0.2);
+}
+
+.program-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.program-card p {
+    margin-bottom: 20px;
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.program-card .btn-secondary {
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.program-card .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+    z-index: -1;
+}
+
+.program-card .btn-secondary:hover::before {
+    left: 100%;
+}
+
+.bonus {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+/* Секция с преимуществами */
+.benefits-section {
+    padding: 60px 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 500px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.benefit-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    will-change: transform; /* Оптимизирует анимацию */
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(233, 65, 76, 0.05), rgba(208, 44, 57, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+}
+
+.benefit-card:hover::before {
+    opacity: 1;
+}
+
+.benefit-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.benefit-card .icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* Подвал сайта */
+footer {
+    background: var(--dark-bg);
+    color: #fff;
+    padding: 70px 0 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 400px;
+    margin-bottom: 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo a {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.footer-logo p {
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h4::after,
+.footer-contact h4::after,
+.footer-social h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+
+.footer-links ul,
+.footer-contact ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a,
+.footer-contact li {
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+    font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 0;
+}
+
+/* Медиа-запросы */
+@media screen and (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 70px;
+        background: #fff;
+        height: calc(100vh - 70px);
+        width: 50%;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-active {
+        transform: translateX(0%);
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .form-container {
+        padding: 30px 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .programs-grid, 
+    .stars-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Состояние загрузки */
+.loading {
+    display: none !important;
+}
+
+.loader {
+    display: none !important;
+}
+
+/* Всплывающие сообщения - улучшенная версия */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: #333;
+    padding: 18px 22px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transform: translateY(100px);
+    transition: transform 0.8s cubic-bezier(0.17, 0.67, 0.17, 0.98), opacity 0.8s ease;
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+    max-width: 360px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+/* Стиль для успешного сообщения */
+.toast.success-toast {
+    background: white;
+    border-left: 4px solid #e9414c;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для ошибки */
+.toast.error-toast {
+    background: white;
+    border-left: 4px solid #e71d36;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.toast.error-toast .icon {
+    background: rgba(231, 29, 54, 0.1);
+    color: #e71d36;
+    box-shadow: 0 3px 8px rgba(231, 29, 54, 0.2);
+}
+
+/* Общий эффект свечения для всех уведомлений */
+.toast::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.3), transparent 70%);
+    pointer-events: none;
+}
+
+/* Дополнительный декоративный элемент */
+.toast::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 8s linear;
+}
+
+.toast.show {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+    animation: toastEnter 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards, toastFloat 3s infinite alternate ease-in-out 0.5s;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes toastEnter {
+    0% { transform: translateY(20px) scale(0.95); opacity: 0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
+    60% { transform: translateY(-7px) scale(1.02); opacity: 0.9; box-shadow: 0 25px 65px rgba(0, 0, 0, 0.35); }
+    100% { transform: translateY(0) scale(1); opacity: 1; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+}
+
+.toast.hide {
+    transform: translateY(25px) scale(0.9) rotate(2deg);
+    opacity: 0;
+    pointer-events: none;
+    animation: toastFadeOut 2.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    backdrop-filter: blur(0px);
+}
+
+@keyframes toastFadeOut {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+    15% { transform: translateY(3px) scale(0.99) rotate(0deg); opacity: 0.95; box-shadow: 0 18px 55px rgba(0, 0, 0, 0.25); }
+    40% { transform: translateY(8px) scale(0.97) rotate(0.5deg); opacity: 0.8; box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2); }
+    65% { transform: translateY(15px) scale(0.95) rotate(1deg); opacity: 0.5; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+    85% { transform: translateY(22px) scale(0.92) rotate(1.5deg); opacity: 0.2; box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1); }
+    100% { transform: translateY(25px) scale(0.9) rotate(2deg); opacity: 0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
+}
+
+.toast.show::after {
+    transform: scaleX(1);
+}
+
+@keyframes toastFloat {
+    0% { transform: translateY(0) scale(1); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+    100% { transform: translateY(-10px) scale(1.01); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4); }
+}
+
+.toast .icon {
+    font-size: 30px;
+    color: #e9414c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(233, 65, 76, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.toast .icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
+    animation: iconGlow 3s infinite alternate;
+}
+
+@keyframes iconGlow {
+    0% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.toast .content {
+    flex: 1;
+    position: relative;
+}
+
+.toast h4 {
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #444;
+}
+
+.toast p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+    color: #666;
+}
+
+.toast .close-toast {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toast .close-toast:hover {
+    background: rgba(0, 0, 0, 0.25);
+    transform: rotate(90deg) scale(1.1);
+    opacity: 1;
+}
+
+.toast .close-toast i {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Усиленная анимация встряхивания для иконки */
+@keyframes tada {
+    0% { transform: scale(1) rotate(0); }
+    10%, 20% { transform: scale(0.9) rotate(-10deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.2) rotate(10deg); }
+    40%, 60%, 80% { transform: scale(1.2) rotate(-10deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+.icon i.tada {
+    animation: tada 1.5s ease forwards;
+}
+
+/* Анимация пульсации для кнопки при отправке */
+@keyframes buttonPulse {
+    0% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+    100% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+}
+
+.form-submit-animation {
+    animation: buttonPulse 1.5s infinite ease-in-out;
+}
+
+/* Стрелка вверх */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 15px rgba(227, 6, 19, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+}
+
+/* Плавные переходы для страницы */
+.page-transition {
+    transition: opacity 0.4s ease;
+}
+
+.page-transition.fade {
+    opacity: 0;
+}
+
+/* Анимация выделения формы */
+@keyframes highlightForm {
+    0% { box-shadow: 0 0 0 rgba(233, 65, 76, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(233, 65, 76, 0.6); }
+    100% { box-shadow: 0 0 0 rgba(233, 65, 76, 0.3); }
+}
+
+.highlight {
+    animation: highlightForm 1.5s ease;
+}
+
+/* Секция о нас - стиль уже определен выше */
+
+.section-subtitle {
+    font-size: 24px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+}
+
+/* Стили для кнопок заказа у карточек артистов */
+.star-card .btn-secondary {
+    margin: 0 20px 20px 20px;
+    text-align: center;
+    display: block;
+}
+
+/* Стили для бургера с анимацией */
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+    opacity: 0;
+}
+
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Анимация появления навигационных ссылок */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Современные всплывающие подсказки */
+.tooltip {
+    position: fixed;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    z-index: 1001;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s var(--cubic-bezier);
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.8);
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Индикатор активного раздела меню */
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Стилизация иконок в полях формы */
+.form-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    opacity: 0.6;
+    transition: all 0.3s var(--cubic-bezier);
+    pointer-events: none;
+}
+
+.form-group:focus-within .form-icon {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+/* Корректировка стилей под иконки */
+input, select {
+    padding-right: 50px;
+}
+
+/* Стилизация кнопки с иконкой */
+.quick-form .btn-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.quick-form .btn-primary i {
+    transition: transform 0.3s var(--cubic-bezier);
+}
+
+.quick-form .btn-primary:hover i {
+    transform: translateX(5px);
+}
+
+/* Добавление эффекта при фокусе для формы */
+.form-container {
+    transition: transform 0.4s var(--cubic-bezier), box-shadow 0.4s var(--cubic-bezier);
+    will-change: transform, box-shadow;
+}
+
+.form-container:focus-within {
+    box-shadow: 0 15px 50px rgba(233, 65, 76, 0.15);
+}
+
+/* Анимация для полей ввода */
+@keyframes formFieldFocus {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+.form-group:focus-within input,
+.form-group:focus-within select {
+    animation: formFieldFocus 0.4s var(--cubic-bezier);
+}
+
+/* Дополнительные стили для формы */
+.field-focus {
+    position: relative;
+    z-index: 2;
+}
+
+.field-active input,
+.field-active select {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Анимация успешной отправки формы */
+.form-success {
+    animation: formSuccess 0.6s var(--cubic-bezier);
+}
+
+@keyframes formSuccess {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Анимация для иконок при выборе */
+@keyframes selectChanged {
+    0% { transform: translateY(-50%); }
+    50% { transform: translateY(-50%); color: var(--secondary-color); }
+    100% { transform: translateY(-50%); }
+}
+
+.select-changed {
+    animation: selectChanged 0.6s var(--cubic-bezier);
+}
+
+/* Улучшенные состояния наведения и фокуса */
+input:hover, select:hover {
+    border-color: rgba(233, 65, 76, 0.5);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(233, 65, 76, 0.15);
+    background-color: #fff;
+}
+
+/* Улучшенные плейсхолдеры */
+input::placeholder {
+    color: #aaa;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+input:focus::placeholder {
+    opacity: 0.7;
+}
+
+/* Увеличиваем иконку только для селектов, чтобы не перекрывать стрелку */
+select + .form-icon {
+    right: 50px;
+}
+
+.form-group:focus-within .form-icon {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+/* Добавляем красивый кастомный выпадающий список */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Стили для выпадающих списков с выбранным значением */
+select[data-has-value="true"] {
+    color: var(--text-color);
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: var(--primary-color);
+}
+
+/* Улучшенные стили для опций в выпадающих списках */
+select option {
+    padding: 12px 15px;
+    font-weight: normal;
+    font-size: 15px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Улучшенный стиль для выбранной опции */
+select option:checked {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-weight: 500;
+}
+
+/* Кастомные стили для мультистрочного селекта */
+select[size] {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f0f0f0;
+}
+
+/* Кастомный скроллбар для выпадающих списков в Webkit браузерах */
+select[size]::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+select[size]::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+
+select[size]::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* Улучшенные ховер-эффекты для опций */
+select[size] option:hover {
+    background-color: rgba(233, 65, 76, 0.1);
+    color: var(--primary-color);
+}
+
+/* Фикс для отступа между опциями для лучшей читаемости */
+select[size] option + option {
+    margin-top: 2px;
+}
+
+/* Стили для современных кастомных селектов */
+.custom-select-wrapper {
+    position: relative;
+    overflow: visible !important;
+    z-index: auto;
+}
+
+/* Для программ используем static для лучшего позиционирования */
+.form-group:nth-child(4) .custom-select-wrapper {
+    position: static;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.custom-select.open {
+    z-index: 100 !important; /* Разумный z-index для открытого селекта */
+    position: relative;
+}
+
+.hidden-select {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+}
+
+.custom-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    height: 56px;
+    background-color: #fafafa;
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s var(--cubic-bezier);
+}
+
+.custom-select__trigger:hover {
+    border-color: rgba(233, 65, 76, 0.5);
+}
+
+.custom-select.open .custom-select__trigger {
+    border-color: #e71d36;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+    background-color: #fff;
+}
+
+.custom-select__trigger span {
+    display: block;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    position: absolute;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    transform: rotate(45deg) translateY(-4px);
+    transition: all 0.3s ease;
+}
+
+.custom-select.open .arrow {
+    transform: rotate(-135deg) translateY(4px);
+}
+
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 0 0 12px 12px;
+    opacity: 0;
+    transition: all 0.3s var(--cubic-bezier);
+    z-index: 100 !important; /* Разумный z-index */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    pointer-events: none; /* Добавляем для предотвращения кликов по скрытому меню */
+    border: none; /* Без границы */
+}
+
+.custom-select.open .custom-options {
+    max-height: 400px; /* Увеличиваем высоту */
+    opacity: 1;
+    pointer-events: auto; /* Разрешаем клики при открытом меню */
+    border: none; /* Без границы */
+    overflow-y: auto; /* Делаем скроллируемым при необходимости */
+}
+
+/* Убираем модальное поведение, только стандартные выпадающие списки */
+.form-group:nth-child(3) .custom-select.open .custom-options,
+.form-group:nth-child(4) .custom-select.open .custom-options {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-height: 400px !important; /* Увеличиваем максимальную высоту */
+    background-color: #fff !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 0 0 12px 12px !important;
+    opacity: 1 !important;
+    pointer-events: auto !important; /* Разрешаем клики */
+    transform: none !important;
+    border: none !important;
+    overflow-y: auto !important;
+}
+
+/* Скрываем границы и псевдоэлементы */
+.form-group:nth-child(3) .custom-select.open::before,
+.form-group:nth-child(4) .custom-select.open::before {
+    display: none !important;
+}
+
+.form-group:nth-child(3) .custom-select.open .custom-options::before,
+.form-group:nth-child(4) .custom-select.open .custom-options::before,
+.form-group:nth-child(3) .custom-select.open .custom-options::after,
+.form-group:nth-child(4) .custom-select.open .custom-options::after {
+    display: none !important;
+}
+
+/* Устанавливаем правильные позиции в конце файла */
+
+/* УДАЛЕНО - УСТАРЕЛО */
+
+/* УДАЛЕНО - УСТАРЕЛО */
+
+/* УДАЛЕНО - УСТАРЕЛО */
+
+/* УДАЛЕНО - УСТАРЕЛО */
+
+/* Устанавливаем правильные позиции в конце файла */ 
+
+/* УДАЛЕНО - УСТАРЕЛО */
+
+/* Удаляем возможную красную нижнюю полоску у последнего элемента */
+.form-group:nth-child(3) .custom-select.open .custom-option:last-child,
+.form-group:nth-child(4) .custom-select.open .custom-option:last-child {
+    border-bottom: none !important;
+}
+
+/* Обновляем стиль для выделения при наведении */
+.form-group:nth-child(3) .custom-select.open .custom-option:hover,
+.form-group:nth-child(4) .custom-select.open .custom-option:hover {
+    background-color: rgba(0, 0, 0, 0.03) !important; /* Очень светлый серый вместо розового */
+    transform: translateX(5px) !important;
+    border-bottom: none !important; /* Убираем красную полоску при наведении */
+}
+
+/* Применяем к body стиль, когда модальное окно открыто */
+body.modal-open {
+    overflow: hidden !important; /* Предотвращаем прокрутку страницы за модальным окном */
+}
+
+/* Устанавливаем правильные позиции в конце файла */ 
+
+/* УДАЛЕНО - УСТАРЕЛО */
+
+/* Устанавливаем правильные позиции в конце файла */
+
+/* Простой стиль для выпадающих списков без рамок */
+.form-group:nth-child(3) .custom-select.open .custom-options,
+.form-group:nth-child(4) .custom-select.open .custom-options {
+    display: block !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    background-color: white !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+    border: none !important;
+    border-radius: 0 0 12px 12px !important;
+    z-index: 100 !important;
+    max-height: 400px !important; /* Увеличиваем высоту */
+    overflow-y: auto !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Отключаем все анимации и эффекты */
+.form-group:nth-child(3) .custom-select.open .custom-option,
+.form-group:nth-child(4) .custom-select.open .custom-option {
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+    border-bottom: none !important; /* Убираем границу полностью */
+    padding: 15px 20px !important;
+}
+
+/* Убираем рамку у последнего элемента */
+.form-group:nth-child(3) .custom-select.open .custom-option:last-child,
+.form-group:nth-child(4) .custom-select.open .custom-option:last-child {
+    border-bottom: none !important;
+}
+
+/* Отключаем все затемнения и эффекты */
+.form-group:nth-child(3) .custom-select.open::before,
+.form-group:nth-child(4) .custom-select.open::before {
+    display: none !important;
+}
+
+/* Убираем все прочие анимации и эффекты */
+@keyframes modalSlideIn {}
+@keyframes backdropFadeIn {}
+@keyframes itemFadeIn {}
+
+/* Устанавливаем правильные позиции в конце файла */
+
+/* Возвращаем исходные стили выпадающих меню, но без рамок */
+.custom-select.open .custom-options {
+    max-height: 400px;
+    opacity: 1;
+    border: none;
+    overflow-y: auto;
+    z-index: 100;
+    background-color: white;
+    box-shadow: none !important;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Стили для опций в выпадающих списках */
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 15px 22px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: none !important; /* Убираем красную полоску */
+}
+
+.custom-option:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.custom-option.selected {
+    background-color: rgba(233, 65, 76, 0.05);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Убираем рамку у последнего элемента */
+.custom-select.open .custom-option:last-child {
+    border-bottom: none !important;
+}
+
+/* Устанавливаем правильные позиции в конце файла */
+
+/* Специальное отображение для списка программ */
+.form-group:nth-child(4) .custom-select .custom-options {
+    max-height: none !important;
+    min-height: auto !important; /* Автоматическая высота */
+    height: auto !important;
+    overflow: visible !important;
+    position: absolute !important;
+    z-index: 100 !important; /* Разумный z-index */
+    transform: translateY(0) !important;
+    top: 100% !important;
+    display: block !important;
+}
+
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 15px 22px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-option:hover {
+    background-color: rgba(233, 65, 76, 0.08);
+    border-bottom: none !important; /* Remove any bottom border on hover */
+}
+
+.custom-option.selected {
+    background-color: rgba(233, 65, 76, 0.1);
+    color: var(--primary-color);
+    font-weight: 500;
+    border-bottom: none !important; /* Remove any bottom border when selected */
+}
+
+/* Стили для контента опций */
+.option-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.option-text {
+    flex: 1;
+}
+
+.option-title {
+    font-weight: 500;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.option-subtitle {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Стилизация скроллбара для выпадающих списков */
+.custom-options::-webkit-scrollbar {
+    width: 8px; /* Делаем скроллбар шире */
+    height: 8px;
+}
+
+.custom-options::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.custom-options::-webkit-scrollbar-thumb {
+    background: #e71d36; /* Цвет скроллбара такой же как у бренда */
+    border-radius: 4px;
+}
+
+/* Для программ сделаем особые правила */
+.form-group:nth-child(4) {
+    position: relative !important; 
+    overflow: visible !important;
+}
+
+/* Позиционирование выпадающего списка программ */
+.form-group:nth-child(4) .custom-select {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* Гарантируем, что форма и ее родители не ограничивают видимость */
+#form, .quick-form .container, .form-container form {
+    overflow: visible !important;
+}
+
+/* Стили для модального окна артиста */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    max-width: 820px;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    border: none;
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.modal-content:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 22px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    padding: 35px 40px;
+    position: relative;
+    background: linear-gradient(135deg, #e71d36, #bd1422);
+    overflow: hidden;
+}
+
+.modal-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.7;
+}
+
+.modal-header h2 {
+    font-size: 32px;
+    color: #fff;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    position: relative;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .modal-body {
+        flex-direction: row;
+    }
+}
+
+.modal-image {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 300px;
+}
+
+@media (min-width: 768px) {
+    .modal-image {
+        width: 45%;
+    }
+}
+
+.modal-image:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), transparent);
+    pointer-events: none;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.modal-content:hover .modal-image img {
+    transform: scale(1.08);
+}
+
+.modal-info {
+    padding: 40px 45px;
+    flex: 1;
+    background-color: #fff;
+    position: relative;
+}
+
+#modalDescription {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 35px;
+    position: relative;
+    padding-bottom: 25px;
+}
+
+#modalDescription:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(to right, #e71d36, transparent);
+    border-radius: 4px;
+}
+
+.price-list {
+    border-top: none;
+    padding-top: 0;
+}
+
+.price-list:before {
+    content: 'Варианты программ';
+    display: block;
+    font-weight: 800;
+    font-size: 22px;
+    color: #e71d36;
+    margin-bottom: 25px;
+}
+
+.price-item {
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.price-item:hover {
+    background-color: rgba(233, 65, 76, 0.08);
+    transform: translateY(-3px) translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-info {
+    flex: 1;
+}
+
+.price-item strong {
+    color: #222;
+    font-weight: 700;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.price-item span {
+    display: block;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.price-item .price-value,
+.price-item strong span,
+.modal-info span.price-value,
+.modal-info .price-item span:last-child {
+    display: inline-block;
+    background-color: white;
+    color: #e71d36;
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #e71d36;
+    text-shadow: 0 1px 1px rgba(231, 29, 54, 0.1);
+}
+
+.price-item .price-value::before,
+.price-item strong span::before,
+.modal-info span.price-value::before,
+.modal-info .price-item span:last-child::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(231, 29, 54, 0.1), transparent);
+    transition: left 0.7s ease;
+}
+
+.price-item:hover .price-value,
+.price-item strong span:hover,
+.modal-info span.price-value:hover,
+.modal-info .price-item span:last-child:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background-color: #fffafa;
+}
+
+.price-item:hover .price-value::before,
+.price-item strong span:hover::before,
+.modal-info span.price-value:hover::before,
+.modal-info .price-item span:last-child:hover::before {
+    left: 100%;
+}
+
+/* Стиль для выделения цен, если они просто обычный текст */
+.modal-info strong + span,
+.modal-info span[class*="price"],
+.modal-info span:last-child {
+    color: #e71d36;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+/* Гарантированное выделение цен в модальном окне */
+.modal-info strong,
+.modal-info span,
+.price-item span,
+.modal-body span,
+.modal-info *:not(h2):not(#modalDescription):not(.price-list):not(.price-item) {
+    font-weight: 700;
+}
+
+/* Жестко находим и выделяем любые цены в модальном окне */
+.modal span:nth-child(2),
+.modal span:last-child,
+.modal-info span:last-child,
+.price-item span:nth-child(2),
+.price-item span:last-child,
+.price-item strong + span,
+.modal *:not(h2):not(#modalDescription):not(strong):not(p) span {
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+}
+
+/* Специально для цен с правой стороны */
+.modal-body span:last-child,
+.price-item > *:last-child {
+    display: inline-block;
+    background-color: white;
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 18px !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e71d36;
+}
+
+/* Сбрасываем предыдущие стили, которые могли некорректно применяться */
+.modal span,
+.modal strong,
+.price-item strong,
+.modal-info *:not(h2):not(#modalDescription) {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* Выделяем только цены красным (правый элемент в строке) */
+.price-item > *:last-child,
+.modal span:last-child:not(.price-item span),
+.modal-info div > span:last-child {
+    display: inline-block;
+    background-color: white;
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 18px !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e71d36;
+}
+
+/* Отдельный стиль для форматирования текста цены */
+.modal span:contains("Р"),
+.modal span:contains("руб"),
+.modal div:contains("Р"):not(strong):not(h2):not(p),
+.modal div:contains("руб"):not(strong):not(h2):not(p) {
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+}
+
+/* Сбрасываем предыдущие стили для точной настройки */
+.modal span,
+.modal strong,
+.price-item strong,
+.modal-info *:not(h2):not(#modalDescription) {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* Выделяем только цены справа */
+.price-item > *:last-child,
+.modal-info .price-item span:last-child,
+.price-item > div:last-child span {
+    display: inline-block;
+    background-color: white;
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 18px !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e71d36;
+    margin-left: auto;
+}
+
+/* Конкретные селекторы для цен в модальном окне */
+.modal-body span[class$="р"],
+.modal-body span[class*="минут)"],
+.price-item > div:last-child span,
+.price-item > span:last-child {
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+}
+
+/* Максимально точные селекторы для цен в модальном окне, основанные на скриншоте */
+.modal span:nth-child(2):last-child,
+.modal-info > div > div > span:last-child,
+.modal-info span:contains("1.800"),
+.modal-info span:contains("2.500"),
+.modal-info span:contains("3.500"),
+.modal-info span:contains("4.000"),
+.modal-info span:contains("4.500") {
+    display: inline-block !important;
+    background-color: white !important;
+    color: #e71d36 !important;
+    font-weight: 800 !important;
+    padding: 8px 15px !important;
+    border-radius: 8px !important;
+    font-size: 18px !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08) !important;
+    border: 2px solid #e71d36 !important;
+    text-shadow: none !important;
+}
+
+/* Прямой хак для цен справа */
+.price-item:after {
+    content: attr(data-price);
+    display: inline-block;
+    background-color: white;
+    color: #e71d36;
+    font-weight: 800;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e71d36;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Стиль для ценников в модальном окне */
+.price-tag {
+    display: inline-block;
+    background-color: white;
+    color: #e71d36;
+    font-weight: 800;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e71d36;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover .price-tag {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(231, 29, 54, 0.15);
+    background-color: #fffafa;
+}
+
+/* Улучшаем отображение программ */
+.programs-section {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding: 80px 0;
+}
+
+.programs-container {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.programs-container.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Стили для активной звездной карточки */
+.star-card.active {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(231, 29, 54, 0.2);
+    border: 2px solid #e71d36;
+}
+
+/* Улучшение анимации для привлечения внимания к форме */
+@keyframes highlightForm {
+    0% { box-shadow: 0 20px 50px rgba(231, 29, 54, 0.0); transform: translateY(0); }
+    50% { box-shadow: 0 20px 50px rgba(231, 29, 54, 0.3); transform: translateY(-5px); }
+    100% { box-shadow: 0 20px 50px rgba(231, 29, 54, 0.0); transform: translateY(0); }
+}
+
+.highlight {
+    animation: highlightForm 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Улучшение стилей для формы заказа */
+.form-container {
+    z-index: 1000 !important;
+    overflow: visible !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+/* Улучшение видимости блоков на странице */
+section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Явное указание для раздела формы */
+section#form {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1000 !important;
+}
+
+/* Стили для заблокированных селектов */
+.custom-select.disabled,
+.custom-select__trigger.disabled {
+    background-color: #f0f0f0 !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
+    color: #888;
+    border-color: #ddd !important;
+}
+
+.custom-select.disabled .arrow {
+    opacity: 0.5;
+}
+
+/* Стиль для селекторов в зависимом порядке */
+.custom-select__trigger span {
+    color: #555;
+}
+
+.custom-select__trigger.disabled span {
+    color: #888;
+    font-style: italic;
+}
+
+/* Улучшаем видимость и позиционирование выпадающих списков */
+.custom-options {
+    z-index: 1000 !important; /* Увеличиваем z-index для уверенной видимости */
+    max-height: 300px !important; /* Гарантируем достаточную высоту */
+    overflow-y: auto !important;
+}
+
+/* Гарантируем, что форма и все выпадающие списки хорошо видны */
+#form, .quick-form .container, .form-container, .form-container form, .form-group {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+.footer-contact a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-color);
+}
+
+.benefit-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    will-change: transform; /* Оптимизирует анимацию */
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.toast .close-toast {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.toast .close-toast:hover {
+    background: rgba(0, 0, 0, 0.25);
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+.toast .close-toast i {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Анимация встряхивания для иконки */
+@keyframes tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+.icon i.tada {
+    animation: tada 1.2s ease forwards;
+}
+
+.toast.success-toast {
+    background: white;
+    border-left: 4px solid #e9414c;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.toast.success-toast .icon {
+    background: rgba(233, 65, 76, 0.1);
+    color: #e9414c;
+    box-shadow: 0 3px 8px rgba(233, 65, 76, 0.2);
+}
+
+/* Убираем браузерные индикаторы автозаполнения и стилизацию для input */
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    background-color: #fff !important;
+    color: #222 !important;
+    border: 1px solid #e0e0e0 !important;
+    transition: background-color 9999s ease-in-out 0s;
+    caret-color: #e9414c !important;
+}
+
+input:-webkit-autofill::first-line,
+select:-webkit-autofill::first-line {
+    color: #222 !important;
+}
+
+input:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(233, 65, 76, 0.15) !important;
+}

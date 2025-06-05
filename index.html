@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Закажите выступление ростовых кукол Ирины Аллегровой, Артура Пирожкова, Леонида Агутина в Тольятти!">
+    <meta name="keywords" content="ростовые куклы, звёздные гости, праздник, Тольятти, Аллегрова, Пирожков, Агутин">
+    <meta name="author" content="Звёздные Гости">
+    <title>Звёздные Гости - Праздник с лицом звезды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <style>
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+                        color: #cb1b45;            margin-left: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        
+                .nav-links a:hover,         .nav-links a.active {            color: #e71d36;        }
+        
+        .burger {
+            display: none;
+        }
+        
+        /* Hero section styling */
+        #hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none; /* Prevent text selection */
+        }
+        
+        #hero * {
+            cursor: default; /* Change cursor to default for all hero elements */
+        }
+        
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none; /* This prevents any hover/interaction with the video */
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            pointer-events: none; /* Prevents interaction with the overlay */
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            pointer-events: none; /* Disable hover effects on the entire hero content */
+        }
+        
+        .hero-content .btn-primary {
+            pointer-events: auto; /* Re-enable hover only for the button */
+            margin-top: 20px; /* Less space for the new design */
+            position: relative;
+            z-index: 10;
+        }
+        
+        .animated-text {
+            color: #ffffff;
+            font-size: 9rem; /* MUCH BIGGER */
+            font-weight: 800; /* Bolder */
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            max-width: 1200px;
+            letter-spacing: 0px;
+            animation: fadeIn 1.5s ease-in-out;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            text-align: center;
+        }
+        
+        .subtitle-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn-primary {
+            background: #d62828 !important;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(214, 40, 40, 0.4);
+        }
+        
+        .btn-primary:hover {                        background: #333333 !important;            transform: translateY(-2px);            box-shadow: 0 6px 20px rgba(51, 51, 51, 0.5);        }
+        
+        .btn-primary:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                height: calc(100vh - 60px);
+                background: white;
+                flex-direction: column;
+                width: 0;
+                overflow: hidden;
+                transition: width 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-active {
+                width: 250px;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links li {
+                margin: 20px 0 20px 30px;
+            }
+            
+            .burger {
+                display: block;
+                cursor: pointer;
+            }
+            
+            .burger div {
+                width: 25px;
+                height: 3px;
+                background-color: #333;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+            
+            .animated-text {
+                font-size: 5rem;
+            }
+        }
+        
+        /* Add additional responsive breakpoints */
+        @media (max-width: 1200px) {
+            .animated-text {
+                font-size: 7rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .animated-text {
+                font-size: 5rem;
+            }
+            
+            .subtitle-text {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .animated-text {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle-text {
+                font-size: 1.1rem;
+            }
+            
+            header .container {
+                padding: 10px 20px;
+            }
+        }
+        
+        /* Новые стили контейнеров персонажей */
+        .characters-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .character-section {
+            background-color: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+        }
+        
+        .character-subtitle {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .character-section {
+                padding: 0;
+            }
+            
+            .character-subtitle {
+                font-size: 20px;
+            }
+        }
+        
+        .form-container.highlight {
+            animation: formHighlight 1.5s ease;
+        }
+        
+        @keyframes formHighlight {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 0 30px rgba(214, 40, 40, 0.6); }
+        }
+
+        /* МОДАЛЬНОЕ ОКНО ОТЗЫВОВ (слайдер, только во всплывающем окне) */
+        #reviews-section {
+          display: none !important;
+          position: fixed;
+          left: 0; top: 0;
+          width: 100vw; height: 100vh;
+          background: rgba(255,255,255,0.85);
+          backdrop-filter: blur(6px);
+          z-index: 2000;
+          overflow: auto;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+          opacity: 0;
+          pointer-events: none;
+        }
+        #reviews-section.open {
+          display: flex !important;
+          opacity: 1;
+          pointer-events: auto;
+        }
+        #reviews-modal {
+          max-width: 1500px;
+          width: 90vw;
+          padding: 70px 60px 60px 60px;
+          background: #fff;
+          border-radius: 36px;
+          box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+          text-align: center;
+          position: relative;
+          animation: modalShow 0.45s cubic-bezier(.4,0,.2,1);
+          margin: 60px auto 0 auto;
+        }
+        @keyframes modalShow {
+          0% { opacity: 0; transform: scale(0.95) translateY(40px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @media (max-width: 900px) {
+          #reviews-modal {
+            padding: 24px 2vw 24px 2vw;
+            max-width: 99vw;
+            border-radius: 16px;
+            margin: 24px auto 0 auto;
+          }
+        }
+        @media (max-width: 600px) {
+          #reviews-modal {
+            padding: 10px 0 10px 0;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+          }
+        }
+        #close-reviews {
+          position: absolute;
+          top: 18px;
+          right: 18px;
+          background: #e71d36;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 44px; height: 44px;
+          font-size: 22px;
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 2px 8px rgba(231,29,54,0.10);
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s;
+          z-index: 10;
+        }
+        #close-reviews:hover {
+          background: #c71f37;
+          transform: scale(1.08) rotate(8deg);
+        }
+        #close-reviews .fa {
+          pointer-events: none;
+        }
+        #reviews-slider {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-width: 220px;
+          min-height: 320px;
+          position: relative;
+        }
+        .review-slide {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          transition: opacity 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);
+          opacity: 0;
+          position: absolute;
+          left: 0; right: 0; top: 0; bottom: 0;
+        }
+        .review-slide.active {
+          display: flex;
+          opacity: 1;
+          position: relative;
+          transform: scale(1);
+          z-index: 2;
+        }
+        .review-photo {
+          width: 320px;
+          height: 320px;
+          border-radius: 16px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+          object-fit: cover;
+        }
+        .review-author {
+          margin-top: 16px;
+          font-weight: 600;
+          font-size: 18px;
+        }
+        .review-text {
+          font-size: 22px;
+          color: #444;
+          margin-top: 24px;
+          text-align: center;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+          background: #fafbfc;
+          border-radius: 20px;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+          padding: 32px 36px 28px 36px;
+          font-family: 'Montserrat', Arial, sans-serif;
+          line-height: 1.7;
+          transition: box-shadow 0.2s, background 0.2s;
+          opacity: 0;
+          animation: reviewFadeIn 0.7s ease 0.1s forwards;
+        }
+        @keyframes reviewFadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .review-text:hover {
+          box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+          background: #f5f7fa;
+        }
+        @media (max-width: 600px) {
+          .review-text {
+            font-size: 15px;
+            padding: 16px 8px 16px 8px;
+            max-width: 98vw;
+          }
+        }
+        .review-text:before, .review-text:after { display: none !important; content: none !important; }
+        .slider-controls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 18px;
+          margin-top: 28px;
+        }
+        .slider-arrow {
+          background: #f3f3f3;
+          border: none;
+          border-radius: 50%;
+          width: 40px; height: 40px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 22px;
+          color: #e71d36;
+          cursor: pointer;
+          transition: background 0.2s, color 0.2s, transform 0.2s;
+          box-shadow: 0 2px 8px rgba(231,29,54,0.08);
+        }
+        .slider-arrow:hover {
+          background: #e71d36;
+          color: #fff;
+          transform: scale(1.08);
+        }
+        .slider-counter {
+          font-size: 16px;
+          color: #888;
+          min-width: 48px;
+          text-align: center;
+          font-weight: 500;
+        }
+        @media (max-width: 900px) {
+          #reviews-modal {
+            padding: 24px 2vw 24px 2vw;
+            max-width: 99vw;
+            border-radius: 16px;
+          }
+          .review-photo { width: 180px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="#">ЗВЁЗДНЫЕ<span>ГОСТИ</span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#stars">Звёзды</a></li>
+                <li><a href="#programs">Программы</a></li>
+                <li><a href="#form">Заказать</a></li>
+                <li><a href="#" id="reviews-nav">Отзывы</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" style="padding-top: 70px; pointer-events: none;">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="assets/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <p class="animated-text">Праздник с лицом <span style="color: #c71f37;">звезды</span>!<br>теперь в Тольятти</p>
+            <p class="subtitle-text">Удивите гостей появлением любимых звёзд эстрады на вашем празднике</p>
+            <a href="#form" class="btn-primary" style="pointer-events: auto; background: #e71d36 !important;">Заказать выступление</a>
+        </div>
+    </section>
+
+    <section id="form" class="quick-form">
+        <div class="container">
+            <div class="form-container">
+                <h2>Заказать выступление</h2>
+                <form id="request-form" novalidate autocomplete="off">
+                    <div class="form-group">
+                        <input type="text" id="name-input" placeholder="Ваше имя" required autocomplete="off">
+                        <div class="field-error" id="name-error" style="display: none;">Пожалуйста, введите ваше имя</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Телефон" required pattern="\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}" value="+7 " autocomplete="off">
+                        <div class="field-error" id="phone-error" style="display: none;">Пожалуйста, введите корректный номер телефона</div>
+                    </div>
+                    
+                    <div class="select-group">
+                        <div class="form-group">
+                            <label>Выберите категорию:</label>
+                            <div class="custom-select-wrapper">
+                                <select id="category" class="hidden-select" required autocomplete="off">
+                                    <option value="" selected>Не выбрано</option>
+                                    <option value="stars">Звёзды</option>
+                                    <option value="fairytale">Сказка на лапках</option>
+                                </select>
+                                <div class="custom-select">
+                                    <div class="custom-select__trigger"><span>Не выбрано</span><div class="arrow"></div></div>
+                                    <div class="custom-options" id="category-options">
+                                        <span class="custom-option" data-value="">Не выбрано</span>
+                                        <span class="custom-option" data-value="stars">Звёзды</span>
+                                        <span class="custom-option" data-value="fairytale">Сказка на лапках</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="stars-select-group" class="select-group" style="display: none;">
+                        <div class="form-group">
+                            <label>Выберите звезду:</label>
+                            <div class="custom-select-wrapper">
+                                <select id="star" class="hidden-select">
+                                    <option value="" disabled selected>Выберите звезду</option>
+                                    <option value="allegrova">Ирина Аллегрова</option>
+                                    <option value="pirozhkov">Артур Пирожков</option>
+                                    <option value="agutin">Леонид Агутин</option>
+                                </select>
+                                <div class="custom-select">
+                                    <div class="custom-select__trigger"><span>Выберите звезду</span><div class="arrow"></div></div>
+                                    <div class="custom-options" id="star-options">
+                                        <span class="custom-option" data-value="allegrova">Ирина Аллегрова</span>
+                                        <span class="custom-option" data-value="pirozhkov">Артур Пирожков</span>
+                                        <span class="custom-option" data-value="agutin">Леонид Агутин</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="fairytale-select-group" class="select-group" style="display: none;">
+                        <div class="form-group">
+                            <label>Выберите персонажа:</label>
+                            <div class="custom-select-wrapper">
+                                <select id="character" class="hidden-select">
+                                    <option value="" disabled selected>Выберите персонажа</option>
+                                    <option value="bear">Белый Мишка</option>
+                                    <option value="cheburashka">Чебурашка</option>
+                                </select>
+                                <div class="custom-select">
+                                    <div class="custom-select__trigger"><span>Выберите персонажа</span><div class="arrow"></div></div>
+                                    <div class="custom-options" id="character-options">
+                                        <span class="custom-option" data-value="bear">Белый Мишка</span>
+                                        <span class="custom-option" data-value="cheburashka">Чебурашка</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="custom-select-wrapper">
+                            <select id="program" class="hidden-select" required disabled autocomplete="off">
+                                <option value="" disabled selected>Выберите программу</option>
+                            </select>
+                            <div class="custom-select disabled">
+                                <div class="custom-select__trigger disabled"><span>Сначала выберите персонажа</span><div class="arrow"></div></div>
+                                <div class="custom-options" id="program-options">
+                                    <!-- Программы будут добавлены через JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="form-error" class="error-message" style="display: none;">
+                        Выберите звезду или персонажа из "Сказка на лапках"
+                    </div>
+                    
+                    <div class="button-container" style="text-align: center; margin-top: 20px;">
+                        <button type="submit" class="btn-primary" style="font-size: 18px; padding: 15px 40px;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section" style="background-image: url('assets/background.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h2 class="section-title">Кто мы такие?</h2>
+            <div class="about-content">
+                <p class="section-subtitle">Уникальное шоу пародий с участием звезд</p>
+                <p>Наша команда — это артисты-аниматоры в образах культовых персонажей эстрады. Мы создаём мини-концерты, поздравления и фотосессии, которые остаются в памяти надолго.</p>
+                <p>Никакого проката - только живые выступления и взаимодействие с публикой!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="stars" class="stars-section" style="background-image: url('assets/background.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h2 class="section-title">Наши звёзды</h2>
+            <div class="stars-grid">
+                <div class="star-card" data-star="allegrova">
+                    <div class="star-image">
+                        <img src="assets/allegorva.jpg" alt="Ирина Аллегрова - ростовая кукла">
+                        <div class="star-hover">Смотреть программы</div>
+                    </div>
+                    <h3>Ирина Аллегрова</h3>
+                    <p>Императрица сцены</p>
+                    <a href="#form" class="btn-secondary">Заказать</a>
+                </div>
+                <div class="star-card" data-star="pirozhkov">
+                    <div class="star-image">
+                        <img src="assets/pirozhkov.jpg" alt="Артур Пирожков - ростовая кукла">
+                        <div class="star-hover">Смотреть программы</div>
+                    </div>
+                    <h3>Артур Пирожков</h3>
+                    <p>Король флирта и танцев</p>
+                    <a href="#form" class="btn-secondary">Заказать</a>
+                </div>
+                <div class="star-card" data-star="agutin">
+                    <div class="star-image">
+                        <img src="assets/agutin.jpg" alt="Леонид Агутин - ростовая кукла">
+                        <div class="star-hover">Смотреть программы</div>
+                    </div>
+                    <h3>Леонид Агутин</h3>
+                    <p>Главный романтик эстрады</p>
+                    <a href="#form" class="btn-secondary">Заказать</a>
+                </div>
+            </div>
+
+            <!-- Сказка на лапках section -->
+            <h2 class="section-title" style="margin-top: 60px;">Сказка на лапках</h2>
+            <div class="stars-grid">
+                <div class="star-card" data-star="bear">
+                    <div class="star-image">
+                        <img src="assets/bear.jpg" alt="Белый Мишка - ростовая кукла">
+                        <div class="star-hover">Смотреть программы</div>
+                    </div>
+                    <h3>Белый Мишка</h3>
+                    <p>Любимец детей и взрослых</p>
+                    <a href="#form" class="btn-secondary">Заказать</a>
+                </div>
+                <div class="star-card" data-star="cheburashka">
+                    <div class="star-image">
+                        <img src="assets/cheburashka.jpeg" alt="Чебурашка - ростовая кукла">
+                        <div class="star-hover">Смотреть программы</div>
+                    </div>
+                    <h3>Чебурашка</h3>
+                    <p>Герой любимых мультфильмов</p>
+                    <a href="#form" class="btn-secondary">Заказать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="programs-section" style="background-image: url('assets/background.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h2 class="section-title">Программы выступлений</h2>
+            <div id="allegrova-programs" class="programs-container">
+                <h3 class="star-name">Ирина Аллегрова</h3>
+                <p class="programs-note">ПРОГРАММЫ: (Дорога обсуждается отдельно)</p>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <h4>ЗВЕЗДНЫЙ КУРЬЕР (5 минут)</h4>
+                        <div class="price">1800Р</div>
+                        <p>Выход в образе, вручение цветов/подарков без музыки — но с сильным эффектом присутствия.</p>
+                        <a href="#form" class="btn-secondary" data-star="allegrova" data-program="kuryer">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ЭКСПРЕСС-ПОЗДРАВЛЕНИЕ (5-7 минут)</h4>
+                        <div class="price">2500Р</div>
+                        <p>Яркий выход, танец, вручение подарков, фото и шлейф эмоций от Ирины.</p>
+                        <a href="#form" class="btn-secondary" data-star="allegrova" data-program="express">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ШОУ-МИНИ (10 минут)</h4>
+                        <div class="price">3500Р</div>
+                        <p>Игра «Перетанцуй Аллегрову», комплимент от «неё самой», фотосессия и огонь в глазах.</p>
+                        <a href="#form" class="btn-secondary" data-star="allegrova" data-program="mini">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ПРОГРАММА 18+ (15 минут)</h4>
+                        <div class="price">4000Р</div>
+                        <p>Танцы, флирт, стриптиз по-Аллегровски (шутливый), страсть, комплимент и фото на память.</p>
+                        <a href="#form" class="btn-secondary" data-star="allegrova" data-program="18plus">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ШОУ С ОГОНЬКОМ (15 минут)</h4>
+                        <div class="price">4500Р</div>
+                        <p>Шары, лепестки, денгомет, флирт и фотосессия — праздник, который запомнится.</p>
+                        <a href="#form" class="btn-secondary" data-star="allegrova" data-program="fire">Заказать</a>
+                    </div>
+                </div>
+            </div>
+            <div id="pirozhkov-programs" class="programs-container">
+                <h3 class="star-name">Артур Пирожков</h3>
+                <p class="programs-note">ПРОГРАММЫ: (Дорога обсуждается отдельно)</p>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <h4>ЗВЕЗДНЫЙ КУРЬЕР (5 минут)</h4>
+                        <div class="price">1800Р</div>
+                        <p>Быстрый выход, вручение подарка — без музыки, но с шикарным вайбом от Пирожкова.</p>
+                        <a href="#form" class="btn-secondary" data-star="pirozhkov" data-program="kuryer">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ЭКСПРЕСС-ПОЗДРАВЛЕНИЕ (5-7 минут)</h4>
+                        <div class="price">2500Р</div>
+                        <p>Танец, вручение ваших подарков, фотосессия и лёгкий флирт от Артура.</p>
+                        <a href="#form" class="btn-secondary" data-star="pirozhkov" data-program="express">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ШОУ-МИНИ (10 минут)</h4>
+                        <div class="price">3500Р</div>
+                        <p>Интерактив «Перетанцуй Пирожкова», комплимент от звезды, танцы и фотосессия.</p>
+                        <a href="#form" class="btn-secondary" data-star="pirozhkov" data-program="mini">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ПРОГРАММА 18+ (15 минут)</h4>
+                        <div class="price">4000Р</div>
+                        <p>Танцы, шутливый стриптиз, флирт, фото и огонь в глазах. Атмосфера — как в Сочи летом!</p>
+                        <a href="#form" class="btn-secondary" data-star="pirozhkov" data-program="18plus">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ШОУ С ОГОНЬКОМ (15 минут)</h4>
+                        <div class="price">4500Р</div>
+                        <p>Шары, лепестки, денгомёт, флирт, лёгкий стрип и фотосессия под аплодисменты.</p>
+                        <a href="#form" class="btn-secondary" data-star="pirozhkov" data-program="fire">Заказать</a>
+                    </div>
+                </div>
+            </div>
+            <div id="agutin-programs" class="programs-container">
+                <h3 class="star-name">Леонид Агутин</h3>
+                <p class="programs-note">ПРОГРАММЫ: (Дорога обсуждается отдельно)</p>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <h4>ЗВЁЗДНЫЙ КУРЬЕР (5 минут)</h4>
+                        <div class="price">2000Р</div>
+                        <p>Лёгкий выход в образе. Вручение цветов, торта или подарка — без музыки, но с харизмой личного визита.</p>
+                        <a href="#form" class="btn-secondary" data-star="agutin" data-program="kuryer">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ЭКСПРЕСС-ПОЗДРАВЛЕНИЕ (5–7 минут)</h4>
+                        <div class="price">2700Р</div>
+                        <p>Танец, вручение подарков, фотосессия, лёгкий флирт и заряд латинского настроения от Леонида.</p>
+                        <a href="#form" class="btn-secondary" data-star="agutin" data-program="express">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ШОУ-МИНИ (10 минут)</h4>
+                        <div class="price">3700Р</div>
+                        <p>Танцы, игра «Спой как Агутин», комплимент от звезды, фото с героем праздника.</p>
+                        <a href="#form" class="btn-secondary" data-star="agutin" data-program="mini">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ПРОГРАММА 18+ (12 минут)</h4>
+                        <div class="price">4200Р</div>
+                        <p>Танцы с намёком, испанские страсти, музыкальный интерактив и флирт в атмосфере ночного концерта.</p>
+                        <a href="#form" class="btn-secondary" data-star="agutin" data-program="18plus">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ШОУ С ОГОНЬКОМ (15 минут)</h4>
+                        <div class="price">4700Р</div>
+                        <p>Лепестки, шары, денгомёт, танцы, «Серенада от Агутина» и финал с фото и эмоциями на максимум.</p>
+                        <a href="#form" class="btn-secondary" data-star="agutin" data-program="fire">Заказать</a>
+                    </div>
+                </div>
+                <div class="bonus">БОНУС: возможен выезд в дуэте с самой Ириной Аллегровой — уточняйте в ЛС!</div>
+            </div>
+
+            <!-- Сказка на лапках программы -->
+            <div id="bear-programs" class="programs-container">
+                <h3 class="star-name">Белый Мишка</h3>
+                <p class="programs-note">ПРОГРАММЫ: (Дорога обсуждается отдельно)</p>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <h4>ПОЗДРАВЛЕНИЕ (5 минут)</h4>
+                        <div class="price">1500Р</div>
+                        <p>Мишка дарит теплые объятия, фотографии и вручает подарки от вашего имени.</p>
+                        <a href="#form" class="btn-secondary" data-star="bear" data-program="greetings">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>МИНИ-ПРОГРАММА (10 минут)</h4>
+                        <div class="price">2500Р</div>
+                        <p>Игры с детьми, танцы, вручение подарков и множество фотографий.</p>
+                        <a href="#form" class="btn-secondary" data-star="bear" data-program="mini">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ПОЛНАЯ ПРОГРАММА (15 минут)</h4>
+                        <div class="price">3500Р</div>
+                        <p>Полноценное выступление с конкурсами, танцами, вручением подарков и фотосессией.</p>
+                        <a href="#form" class="btn-secondary" data-star="bear" data-program="full">Заказать</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="cheburashka-programs" class="programs-container">
+                <h3 class="star-name">Чебурашка</h3>
+                <p class="programs-note">ПРОГРАММЫ: (Дорога обсуждается отдельно)</p>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <h4>ПОЗДРАВЛЕНИЕ (5 минут)</h4>
+                        <div class="price">1500Р</div>
+                        <p>Чебурашка поздравляет именинника, дарит объятия и радость всем участникам праздника.</p>
+                        <a href="#form" class="btn-secondary" data-star="cheburashka" data-program="greetings">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>МИНИ-ПРОГРАММА (10 минут)</h4>
+                        <div class="price">2500Р</div>
+                        <p>Танцы, песенки, вручение подарков и веселье с любимым героем мультфильма.</p>
+                        <a href="#form" class="btn-secondary" data-star="cheburashka" data-program="mini">Заказать</a>
+                    </div>
+                    <div class="program-card">
+                        <h4>ПОЛНАЯ ПРОГРАММА (15 минут)</h4>
+                        <div class="price">3500Р</div>
+                        <p>Полноценная интерактивная программа с играми, танцами, песнями и фотосессией.</p>
+                        <a href="#form" class="btn-secondary" data-star="cheburashka" data-program="full">Заказать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits-section" style="background-image: url('assets/background.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="benefits-grid">
+                <a href="#form" class="benefit-card-link">
+                    <div class="benefit-card">
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>100% вовлечения гостей</h3>
+                        <p>Каждое выступление гарантирует полное погружение всех гостей в атмосферу праздника</p>
+                    </div>
+                </a>
+                <a href="#form" class="benefit-card-link">
+                    <div class="benefit-card">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <h3>Без опозданий - всегда вовремя</h3>
+                        <p>Гарантируем прибытие точно в назначенное время без опозданий</p>
+                    </div>
+                </a>
+                <a href="#form" class="benefit-card-link">
+                    <div class="benefit-card">
+                        <div class="icon"><i class="fas fa-star"></i></div>
+                        <h3>Уникальные костюмы ручной работы</h3>
+                        <p>Каждый костюм создается вручную с вниманием к деталям для максимального сходства</p>
+                    </div>
+                </a>
+                <a href="#form" class="benefit-card-link">
+                    <div class="benefit-card">
+                        <div class="icon"><i class="fas fa-camera"></i></div>
+                        <h3>Фото со звездой для ваших соцсетей</h3>
+                        <p>Сделайте ваш праздник особенным с фотографиями, которые удивят ваших подписчиков</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#">ЗВЁЗДНЫЕ<span style="color: #e9414c;">ГОСТИ</span></a>
+                    <p>Праздник с лицом звезды — теперь в Тольятти!</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#hero">Главная</a></li>
+                        <li><a href="#stars">Звёзды</a></li>
+                        <li><a href="#programs">Программы</a></li>
+                        <li><a href="#form">Заказать</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:89023696959">8 902 369-69-59</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> г. Тольятти</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Мы в соцсетях</h4>
+                    <div class="social-icons">
+                        <a href="https://wa.me/79023696959" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://vk.com/prazdnik_763" target="_blank" class="social-link"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/fffdem" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/prazdnik_tlt63" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ЗВЁЗДНЫЕГОСТИ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="artistModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <div id="modalDescription"></div>
+                    <div class="price-list" id="modalPrices"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ОТЗЫВОВ (слайдер, только во всплывающем окне) -->
+    <section id="reviews-section">
+      <div id="reviews-modal">
+        <button id="close-reviews" title="Скрыть отзывы"><i class="fa fa-times"></i></button>
+        <h2 class="section-title" style="margin-top:10px;">Отзывы наших клиентов</h2>
+        <div id="reviews-slider">
+          <div class="review-slide active">
+            <img class="review-photo" src="assets/отзыв1.jpg" alt="Отзыв 1">
+            <div class="review-author">Клиент</div>
+            <div class="review-text">"Все было здорово! Очень весело, спасибо большое!"</div>
+          </div>
+          <div class="review-slide">
+            <img class="review-photo" src="assets/отзыв2.jpg" alt="Отзыв 2">
+            <div class="review-author">Клиент</div>
+            <div class="review-text">"Зазазывали на день рождения, нам так зашло!<br>Движение просто пушка<br>Все ржали и фоткались, настроение подняли на 100%"</div>
+          </div>
+          <div class="review-slide">
+            <div style="display: flex; gap: 24px; justify-content: center; align-items: center; flex-wrap: wrap;">
+              <img class="review-photo" src="assets/отзыв3.JPG" alt="Отзыв 3, фото 1">
+              <img class="review-photo" src="assets/отзыв3b.JPG" alt="Отзыв 3, фото 2">
+            </div>
+            <div class="review-author">Клиент</div>
+            <div class="review-text">"Организация на высшем уровне! Все гости были в восторге, дети и взрослые смеялись от души. Обязательно обратимся ещё!"</div>
+          </div>
+          <div class="review-slide">
+            <img class="review-photo" src="assets/отзыв4.jpg" alt="Отзыв 4">
+            <div class="review-author">Клиент</div>
+            <div class="review-text">"Это было нечто! Пирожков просто огонь<br>Гости просили продолжения, и мы уже заказали Аллегрову на следующий праздник!"</div>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow" id="slider-prev" title="Предыдущий отзыв"><i class="fa fa-chevron-left"></i></button>
+            <span class="slider-counter" id="slider-counter">1 / 4</span>
+            <button class="slider-arrow" id="slider-next" title="Следующий отзыв"><i class="fa fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+    (function() {
+      var reviewsNav = document.getElementById('reviews-nav');
+      var reviewsSection = document.getElementById('reviews-section');
+      var closeReviewsBtn = document.getElementById('close-reviews');
+      var reviewsModal = document.getElementById('reviews-modal');
+      // Анимация появления/скрытия
+      function openModal() {
+        reviewsSection.classList.add('open');
+        reviewsSection.style.opacity = '1';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        reviewsSection.classList.remove('open');
+        reviewsSection.style.opacity = '0';
+        document.body.style.overflow = '';
+      }
+      if (reviewsNav && reviewsSection && closeReviewsBtn && reviewsModal) {
+        reviewsNav.onclick = function(e) {
+          e.preventDefault();
+          openModal();
+        };
+        closeReviewsBtn.onclick = function(e) {
+          e.preventDefault();
+          closeModal();
+        };
+        reviewsSection.addEventListener('mousedown', function(e) {
+          if (!reviewsModal.contains(e.target)) {
+            closeModal();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && reviewsSection.classList.contains('open')) {
+            closeModal();
+          }
+        });
+      }
+      // Слайдер отзывов
+      var slides = document.querySelectorAll('.review-slide');
+      var prevBtn = document.getElementById('slider-prev');
+      var nextBtn = document.getElementById('slider-next');
+      var counter = document.getElementById('slider-counter');
+      var current = 0;
+      function showSlide(idx) {
+        slides.forEach(function(slide, i) {
+          slide.classList.toggle('active', i === idx);
+        });
+        counter.textContent = (idx+1) + ' / ' + slides.length;
+      }
+      if (prevBtn && nextBtn) {
+        prevBtn.onclick = function() {
+          current = (current - 1 + slides.length) % slides.length;
+          showSlide(current);
+        };
+        nextBtn.onclick = function() {
+          current = (current + 1) % slides.length;
+          showSlide(current);
+        };
+      }
+      // Свайп для мобильных
+      var startX = null;
+      reviewsModal.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) startX = e.touches[0].clientX;
+      });
+      reviewsModal.addEventListener('touchend', function(e) {
+        if (startX !== null && e.changedTouches.length === 1) {
+          var dx = e.changedTouches[0].clientX - startX;
+          if (Math.abs(dx) > 40) {
+            if (dx < 0) nextBtn.click(); else prevBtn.click();
+          }
+          startX = null;
+        }
+      });
+      showSlide(current);
+    })();
+    </script>
+
+    <script src="script.js"></script>
+    <script>
+        // Add modal functionality
+        const modal = document.getElementById('artistModal');
+        const closeBtn = document.querySelector('.close-modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalPrices = document.getElementById('modalPrices');
+        
+        // Smooth scroll to form for benefit cards
+        document.querySelectorAll('.benefit-card-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Scroll to form
+                const formSection = document.getElementById('form');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Add visual highlight to the form
+                    const formContainer = document.querySelector('.form-container');
+                    if (formContainer) {
+                        formContainer.classList.add('highlight');
+                        setTimeout(() => {
+                            formContainer.classList.remove('highlight');
+                        }, 1500);
+                    }
+                }
+            });
+        });
+
+        // Artist data
+        const artistData = {
+            allegrova: {
+                title: 'Ирина Аллегрова',
+                image: 'assets/allegrova.jpg',
+                description: 'Легендарная певица Ирина Аллегрова в виде ростовой куклы - идеальное решение для вашего праздника!',
+                prices: [
+                    { name: 'ЗВЁЗДНЫЙ КУРЬЕР', duration: '5 минут', price: '2.000' },
+                    { name: 'ЭКСПРЕСС-ПОЗДРАВЛЕНИЕ', duration: '5–7 минут', price: '2.700' },
+                    { name: 'ШОУ-МИНИ', duration: '10 минут', price: '3.700' },
+                    { name: 'ПРОГРАММА 18+', duration: '12 минут', price: '4.200' },
+                    { name: 'ШОУ С ОГОНЬКОМ', duration: '15 минут', price: '4.700' }
+                ]
+            },
+            agutin: {
+                title: 'Леонид Агутин',
+                image: 'assets/agutin.jpg',
+                description: 'Ростовая кукла Леонида Агутина - отличный выбор для создания незабываемой атмосферы на вашем мероприятии!',
+                prices: [
+                    { name: 'ЗВЁЗДНЫЙ КУРЬЕР', duration: '5 минут', price: '2.000' },
+                    { name: 'ЭКСПРЕСС-ПОЗДРАВЛЕНИЕ', duration: '5–7 минут', price: '2.700' },
+                    { name: 'ШОУ-МИНИ', duration: '10 минут', price: '3.700' },
+                    { name: 'ПРОГРАММА 18+', duration: '12 минут', price: '4.200' },
+                    { name: 'ШОУ С ОГОНЬКОМ', duration: '15 минут', price: '4.700' }
+                ]
+            },
+            pirozhkov: {
+                title: 'Артур Пирожков',
+                image: 'assets/pirozhkov.jpg',
+                description: 'Ростовая кукла Артура Пирожкова - гарантия веселья и позитива на вашем празднике!',
+                prices: [
+                    { name: 'ЗВЁЗДНЫЙ КУРЬЕР', duration: '5 минут', price: '2.000' },
+                    { name: 'ЭКСПРЕСС-ПОЗДРАВЛЕНИЕ', duration: '5–7 минут', price: '2.700' },
+                    { name: 'ШОУ-МИНИ', duration: '10 минут', price: '3.700' },
+                    { name: 'ПРОГРАММА 18+', duration: '12 минут', price: '4.200' },
+                    { name: 'ШОУ С ОГОНЬКОМ', duration: '15 минут', price: '4.700' }
+                ]
+            },
+            bear: {
+                title: 'Белый Мишка',
+                image: 'assets/bear.jpg',
+                description: 'Белый Мишка - любимец детей и взрослых! Идеальный гость для детского праздника или корпоратива.',
+                prices: [
+                    { name: 'ПОЗДРАВЛЕНИЕ', duration: '5 минут', price: '1.500' },
+                    { name: 'МИНИ-ПРОГРАММА', duration: '10 минут', price: '2.500' },
+                    { name: 'ПОЛНАЯ ПРОГРАММА', duration: '15 минут', price: '3.500' }
+                ]
+            },
+            cheburashka: {
+                title: 'Чебурашка',
+                image: 'assets/cheburashka.jpeg',
+                description: 'Чебурашка - легендарный герой мультфильма, который подарит вашим детям незабываемые впечатления!',
+                prices: [
+                    { name: 'ПОЗДРАВЛЕНИЕ', duration: '5 минут', price: '1.500' },
+                    { name: 'МИНИ-ПРОГРАММА', duration: '10 минут', price: '2.500' },
+                    { name: 'ПОЛНАЯ ПРОГРАММА', duration: '15 минут', price: '3.500' }
+                ]
+            }
+        };
+
+        // Scroll to programs and highlight specific character's programs
+        function scrollToPrograms(characterId) {
+            // Show the programs section
+            const programsSection = document.getElementById('programs');
+            if (programsSection) {
+                programsSection.style.display = 'block';
+            }
+            
+            // Hide all program containers first
+            document.querySelectorAll('#programs .programs-container').forEach(container => {
+                container.style.display = 'none';
+            });
+            
+            // Show only the selected character's program container
+            const targetProgram = document.getElementById(`${characterId}-programs`);
+            if (targetProgram) {
+                targetProgram.style.display = 'block';
+                
+                // Scroll to the program section
+                setTimeout(() => {
+                    programsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    targetProgram.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+
+        // Make artist cards clickable to show modal
+        document.querySelectorAll('.artist-card, .star-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            
+            // Add click handler to show modal
+            card.addEventListener('click', (e) => {
+                // Don't open modal if clicked on the "Заказать" button
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                
+                const artistId = card.getAttribute('data-artist') || card.getAttribute('data-star');
+                if (!artistId || !artistData[artistId]) return;
+                
+                const artist = artistData[artistId];
+                
+                modalTitle.textContent = artist.title;
+                modalImage.src = artist.image;
+                modalDescription.textContent = artist.description;
+                
+                modalPrices.innerHTML = artist.prices.map(price => `
+                    <div class="price-item">
+                        <strong>${price.name}</strong> (${price.duration}) - ${price.price} ₽
+                    </div>
+                `).join('');
+                
+                modal.style.display = 'block';
+            });
+        });
+
+        // Handle "Заказать" buttons on artist cards
+        document.querySelectorAll('.star-card a.btn-secondary, .artist-card a.btn-secondary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const characterId = this.closest('.star-card, .artist-card').getAttribute('data-artist') || 
+                                    this.closest('.star-card, .artist-card').getAttribute('data-star');
+                
+                scrollToPrograms(characterId);
+            });
+        });
+
+        // Handle "Заказать" buttons in program cards
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.program-card .btn-secondary').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const star = this.getAttribute('data-star');
+                    const program = this.getAttribute('data-program');
+                    
+                    // Scroll to form
+                    const formSection = document.getElementById('form');
+                    if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    
+                    // Determine category based on star ID
+                    const isFairytale = star === 'bear' || star === 'cheburashka';
+                    const category = isFairytale ? 'fairytale' : 'stars';
+                    
+                    // Set the category first
+                    setTimeout(() => {
+                        const categorySelect = document.getElementById('category');
+                        if (categorySelect) {
+                            categorySelect.value = category;
+                            
+                            // Update the custom select display
+                            const categoryTrigger = document.querySelector('#category-options').closest('.custom-select').querySelector('.custom-select__trigger span');
+                            if (categoryTrigger) {
+                                categoryTrigger.textContent = category === 'stars' ? 'Звёзды' : 'Сказка на лапках';
+                            }
+                            
+                            // Trigger change event to show the appropriate group
+                            const event = new Event('change');
+                            categorySelect.dispatchEvent(event);
+                            
+                            // Show the appropriate character selection
+                            const starsGroup = document.getElementById('stars-select-group');
+                            const fairytaleGroup = document.getElementById('fairytale-select-group');
+                            
+                            if (category === 'stars') {
+                                starsGroup.style.display = 'block';
+                                fairytaleGroup.style.display = 'none';
+                                
+                                // Set the selected star
+                                const starSelect = document.getElementById('star');
+                                if (starSelect) {
+                                    starSelect.value = star;
+                                    
+                                    // Update the custom select display
+                                    const starTrigger = document.querySelector('#star-options').closest('.custom-select').querySelector('.custom-select__trigger span');
+                                    const starOption = document.querySelector(`.custom-option[data-value="${star}"]`);
+                                    if (starTrigger && starOption) {
+                                        starTrigger.textContent = starOption.textContent.trim();
+                                    }
+                                    
+                                    // Trigger change event to populate program options
+                                    const starEvent = new Event('change');
+                                    starSelect.dispatchEvent(starEvent);
+                                }
+                            } else {
+                                starsGroup.style.display = 'none';
+                                fairytaleGroup.style.display = 'block';
+                                
+                                // Set the selected character
+                                const characterSelect = document.getElementById('character');
+                                if (characterSelect) {
+                                    characterSelect.value = star;
+                                    
+                                    // Update the custom select display
+                                    const characterTrigger = document.querySelector('#character-options').closest('.custom-select').querySelector('.custom-select__trigger span');
+                                    const characterOption = document.querySelector(`#character-options .custom-option[data-value="${star}"]`);
+                                    if (characterTrigger && characterOption) {
+                                        characterTrigger.textContent = characterOption.textContent.trim();
+                                    }
+                                    
+                                    // Trigger change event to populate program options
+                                    const characterEvent = new Event('change');
+                                    characterSelect.dispatchEvent(characterEvent);
+                                }
+                            }
+                            
+                            // Set the program after a delay to ensure program options are populated
+                            setTimeout(() => {
+                                const programSelect = document.getElementById('program');
+                                const programTrigger = document.querySelector('#program-options').closest('.custom-select').querySelector('.custom-select__trigger span');
+                                
+                                if (programSelect && programSelect.querySelector(`option[value="${program}"]`)) {
+                                    programSelect.value = program;
+                                    
+                                    if (programTrigger) {
+                                        const selectedOption = programSelect.querySelector(`option[value="${program}"]`);
+                                        if (selectedOption) {
+                                            programTrigger.textContent = selectedOption.textContent;
+                                        }
+                                    }
+                                }
+                                
+                                // Add visual highlight to the form
+                                const formContainer = document.querySelector('.form-container');
+                                if (formContainer) {
+                                    formContainer.classList.add('highlight');
+                                    setTimeout(() => {
+                                        formContainer.classList.remove('highlight');
+                                    }, 1500);
+                                }
+                            }, 300);
+                        }
+                    }, 300);
+                });
+            });
+        });
+
+        // Close modal
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Category selection handler and form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const categorySelect = document.getElementById('category');
+            const starsGroup = document.getElementById('stars-select-group');
+            const fairytaleGroup = document.getElementById('fairytale-select-group');
+            const errorMessage = document.getElementById('form-error');
+            const form = document.getElementById('request-form');
+            
+            // Handle category change
+            if (categorySelect) {
+                categorySelect.addEventListener('change', function() {
+                    const category = this.value;
+                    
+                    // Hide both groups first
+                    starsGroup.style.display = 'none';
+                    fairytaleGroup.style.display = 'none';
+                    
+                    // Show the selected group
+                    if (category === 'stars') {
+                        starsGroup.style.display = 'block';
+                    } else if (category === 'fairytale') {
+                        fairytaleGroup.style.display = 'block';
+                    }
+                    
+                    // Reset program selection
+                    const programSelect = document.getElementById('program');
+                    if (programSelect) {
+                        programSelect.selectedIndex = 0;
+                        const programTrigger = document.querySelector('#program-options').closest('.custom-select').querySelector('.custom-select__trigger span');
+                        if (programTrigger) {
+                            programTrigger.textContent = 'Выберите программу';
+                        }
+                    }
+                    
+                    // Clear error message if shown
+                    errorMessage.style.display = 'none';
+                });
+            }
+            
+            // Form validation
+            if (form) {
+                // Function to validate phone number
+                function validatePhone(phone) {
+                    // Remove all non-digits
+                    const digits = phone.replace(/\D/g, '');
+                    // Check if it's a valid Russian number (11 digits starting with 7)
+                    return digits.length === 11 && digits[0] === '7';
+                }
+                
+                // Input field validation handlers
+                const nameInput = document.getElementById('name-input');
+                const phoneInput = document.getElementById('phone');
+                const nameError = document.getElementById('name-error');
+                const phoneError = document.getElementById('phone-error');
+                
+                // Real-time validation for name
+                if (nameInput && nameError) {
+                    nameInput.addEventListener('input', function() {
+                        if (!this.value.trim()) {
+                            nameError.style.display = 'block';
+                        } else {
+                            nameError.style.display = 'none';
+                        }
+                    });
+                    
+                    nameInput.addEventListener('blur', function() {
+                        if (!this.value.trim()) {
+                            nameError.style.display = 'block';
+                        }
+                    });
+                }
+                
+                // Real-time validation for phone
+                if (phoneInput && phoneError) {
+                    phoneInput.addEventListener('input', function() {
+                        if (!validatePhone(this.value)) {
+                            phoneError.style.display = 'block';
+                        } else {
+                            phoneError.style.display = 'none';
+                        }
+                    });
+                    
+                    phoneInput.addEventListener('blur', function() {
+                        if (!validatePhone(this.value)) {
+                            phoneError.style.display = 'block';
+                        }
+                    });
+                }
+                
+                form.addEventListener('submit', function(e) {
+                    // Always prevent default form submission first
+                    e.preventDefault();
+                    
+                    // Reset all error states
+                    nameError.style.display = 'none';
+                    phoneError.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                    
+                    let isValid = true;
+                    
+                    // Validate name
+                    if (!nameInput.value.trim()) {
+                        nameError.style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validate phone
+                    if (!validatePhone(phoneInput.value)) {
+                        phoneError.style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Get category value
+                    const category = categorySelect.value;
+                    
+                    // Validate category selection
+                    if (category === '') {
+                        errorMessage.textContent = 'Выберите категорию (Звёзды или Сказка на лапках)';
+                        errorMessage.style.display = 'block';
+                        isValid = false;
+                    } else if (category === 'stars' && !document.getElementById('star').value) {
+                        errorMessage.textContent = 'Выберите звезду';
+                        errorMessage.style.display = 'block';
+                        isValid = false;
+                    } else if (category === 'fairytale' && !document.getElementById('character').value) {
+                        errorMessage.textContent = 'Выберите персонажа';
+                        errorMessage.style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Program validation
+                    const programSelect = document.getElementById('program');
+                    if (isValid && (!programSelect.value || programSelect.selectedIndex === 0)) {
+                        errorMessage.textContent = 'Выберите программу';
+                        errorMessage.style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // If any validation fails, show a toast notification
+                    if (!isValid) {
+                        // Create a validation error toast
+                        const toast = document.createElement('div');
+                        toast.className = 'toast error-toast';
+                        toast.innerHTML = `
+                            <div class="icon"><i class="fas fa-exclamation-circle" style="color: #e71d36;"></i></div>
+                            <div class="content">
+                                <h4>Форма не отправлена</h4>
+                                <p>Пожалуйста, заполните все обязательные поля</p>
+                            </div>
+                            <div class="close-toast"><i class="fas fa-times"></i></div>
+                        `;
+                        document.body.appendChild(toast);
+                        
+                        // Add close handler
+                        toast.querySelector('.close-toast').addEventListener('click', function() {
+                            toast.classList.remove('show');
+                            toast.classList.add('hide');
+                            setTimeout(() => toast.remove(), 2500);
+                        });
+                        
+                        // Show toast with animation
+                        requestAnimationFrame(() => {
+                            toast.classList.add('show');
+                            // Auto-hide after 7 seconds
+                            setTimeout(() => {
+                                if (document.body.contains(toast)) {
+                                    toast.classList.remove('show');
+                                    toast.classList.add('hide');
+                                    setTimeout(() => toast.remove(), 2500);
+                                }
+                            }, 7000);
+                        });
+                        
+                        return;
+                    }
+                    
+                    // Form is valid - proceed with submission animation
+                    
+                    // Анимация отправки формы
+                    const submitBtn = this.querySelector('.btn-primary');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Добавляем анимацию пульсации на кнопку
+                    submitBtn.classList.add('form-submit-animation');
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+                    submitBtn.disabled = true;
+                    
+                    // Добавляем эффект волны по всей форме
+                    const formContainer = document.querySelector('.form-container');
+                    formContainer.classList.add('highlight');
+                    
+                    // Полностью останавливаем анимацию через 3 секунды
+                    setTimeout(() => {
+                        // Останавливаем все анимации кнопки
+                        submitBtn.classList.remove('form-submit-animation');
+                        const spinner = submitBtn.querySelector('.fa-spinner');
+                        if (spinner) {
+                            spinner.classList.remove('fa-spin');
+                        }
+                    }, 3000);
+                    
+                    // Имитация отправки данных на сервер - no confirmations needed
+                    setTimeout(() => {
+                        // Снова останавливаем все анимации для уверенности
+                        submitBtn.classList.remove('form-submit-animation');
+                        const spinner = submitBtn.querySelector('.fa-spinner');
+                        if (spinner) {
+                            spinner.classList.remove('fa-spin');
+                        }
+                        
+                        // Обновляем текст кнопки с анимацией
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
+                        submitBtn.style.background = 'linear-gradient(45deg, #e9414c, #d02c39)';
+                        formContainer.classList.remove('highlight');
+                        formContainer.classList.add('form-success');
+                        
+                        // Удаляем все существующие элементы конфетти на странице
+                        document.querySelectorAll('.confetti').forEach(el => el.remove());
+                        
+                        // Создаем современное уведомление об успешной отправке
+                        const successToast = document.createElement('div');
+                        successToast.className = 'toast success-toast';
+                        successToast.innerHTML = `
+                            <div class="icon"><i class="fas fa-check tada"></i></div>
+                            <div class="content">
+                                <h4>Успешно!</h4>
+                                <p>Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.</p>
+                            </div>
+                        `;
+                        document.body.appendChild(successToast);
+                        
+                        // Показываем уведомление с анимацией
+                        setTimeout(() => {
+                            successToast.classList.add('show');
+                            // Автоматически скрываем через 8 секунд
+                            setTimeout(() => {
+                                if (document.body.contains(successToast)) {
+                                    successToast.classList.remove('show');
+                                    successToast.classList.add('hide');
+                                    setTimeout(() => successToast.remove(), 2500);
+                                }
+                            }, 8000);
+                        }, 300);
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
