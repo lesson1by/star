@@ -719,7 +719,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     category: categoryMap[categorySelect.value] || categorySelect.value,
                     star: starMap[starSelect ? starSelect.value : ""] || "",
                     character: characterMap[characterSelect ? characterSelect.value : ""] || "",
-                    program: programMap[programSelect.value] || programSelect.value
+                    program: programSelect.options[programSelect.selectedIndex] ? programSelect.options[programSelect.selectedIndex].text : ""
                 };
 
                 // Удаляем пустые поля star и character
