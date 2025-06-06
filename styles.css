@@ -3017,3 +3017,152 @@ select:-webkit-autofill:focus {
     border-color: var(--primary-color) !important;
     box-shadow: 0 0 0 3px rgba(233, 65, 76, 0.15) !important;
 }
+
+/* --- MOBILE FIXES --- */
+@media screen and (max-width: 400px) {
+  .container {
+    padding: 0 5px;
+  }
+  .hero-content {
+    padding: 10px 0;
+    max-width: 98vw;
+  }
+  .animated-text {
+    font-size: 2.2rem !important;
+    padding: 10px 0;
+    max-width: 98vw;
+  }
+  .hero-content h1 {
+    font-size: 1.3rem !important;
+  }
+  .section-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 30px;
+  }
+  .form-container {
+    padding: 10px 5px !important;
+    max-width: 99vw !important;
+  }
+  .program-card, .star-card, .benefit-card {
+    padding: 10px 5px !important;
+    min-width: 0 !important;
+  }
+  .stars-grid, .programs-grid, .benefits-grid {
+    gap: 10px !important;
+  }
+  .review-photo {
+    width: 90vw !important;
+    height: 40vw !important;
+    min-width: 120px !important;
+    min-height: 80px !important;
+  }
+  .review-text {
+    font-size: 0.9rem !important;
+    padding: 8px 2px !important;
+    max-width: 98vw !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    padding: 0 5px;
+  }
+  .hero-content {
+    padding: 10px 0;
+    max-width: 98vw;
+  }
+  .animated-text {
+    font-size: 2.8rem !important;
+    padding: 10px 0;
+    max-width: 98vw;
+  }
+  .hero-content h1 {
+    font-size: 1.5rem !important;
+  }
+  .section-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 30px;
+  }
+  .form-container {
+    padding: 15px 5px !important;
+    max-width: 99vw !important;
+  }
+  .program-card, .star-card, .benefit-card {
+    padding: 10px 5px !important;
+    min-width: 0 !important;
+  }
+  .stars-grid, .programs-grid, .benefits-grid {
+    gap: 10px !important;
+  }
+  .review-photo {
+    width: 90vw !important;
+    height: 40vw !important;
+    min-width: 120px !important;
+    min-height: 80px !important;
+  }
+  .review-text {
+    font-size: 1rem !important;
+    padding: 8px 2px !important;
+    max-width: 98vw !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 8px;
+  }
+  .stars-grid, .programs-grid, .benefits-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  .form-container {
+    padding: 20px 5px !important;
+    max-width: 99vw !important;
+  }
+  .program-card, .star-card, .benefit-card {
+    padding: 15px 5px !important;
+    min-width: 0 !important;
+  }
+  .review-photo {
+    width: 80vw !important;
+    height: 40vw !important;
+    min-width: 120px !important;
+    min-height: 80px !important;
+  }
+  .review-text {
+    font-size: 1.1rem !important;
+    padding: 10px 2px !important;
+    max-width: 98vw !important;
+  }
+  .nav-links {
+    width: 80vw !important;
+    min-width: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    top: 60px !important;
+    background: #fff !important;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    border-radius: 0 0 12px 12px;
+    overflow-x: hidden !important;
+  }
+  .nav-links li {
+    margin: 10px 0 10px 20px !important;
+  }
+  .burger {
+    display: block !important;
+    z-index: 2001;
+  }
+}
+
+/* Убираем горизонтальный скролл на всех устройствах */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Плавное открытие/закрытие меню */
+.nav-links {
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
