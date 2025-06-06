@@ -3166,3 +3166,121 @@ html, body {
 .nav-links {
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), width 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
+/* --- MOBILE DROPDOWN & MODAL FIXES --- */
+@media screen and (max-width: 576px) {
+  /* Выпадающий список программ */
+  .custom-select.open .custom-options,
+  .form-group:nth-child(4) .custom-select.open .custom-options {
+    max-height: 220px !important;
+    min-height: unset !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    width: 100vw !important;
+    left: -10vw !important;
+    border-radius: 0 0 16px 16px !important;
+    font-size: 1rem !important;
+    z-index: 3000 !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important;
+  }
+  .custom-option {
+    font-size: 1rem !important;
+    padding: 12px 10px !important;
+    min-width: 0 !important;
+    word-break: break-word;
+  }
+
+  /* Модальное окно артиста */
+  .modal-content {
+    max-width: 99vw !important;
+    width: 99vw !important;
+    padding: 0 0 10px 0 !important;
+    border-radius: 12px !important;
+    margin: 10px auto 0 auto !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
+  }
+  .modal-header {
+    padding: 18px 10px 12px 10px !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  .modal-header h2 {
+    font-size: 1.2rem !important;
+    padding-right: 40px !important;
+    word-break: break-word;
+  }
+  .close-modal {
+    top: 8px !important;
+    right: 8px !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.5rem !important;
+    background: #e71d36 !important;
+    color: #fff !important;
+    z-index: 3001 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10) !important;
+  }
+  .modal-body {
+    flex-direction: column !important;
+    padding: 0 0 10px 0 !important;
+  }
+  .modal-image {
+    width: 100% !important;
+    min-height: 120px !important;
+    max-height: 180px !important;
+    border-radius: 12px 12px 0 0 !important;
+    overflow: hidden !important;
+  }
+  .modal-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  .modal-info {
+    padding: 12px 10px 10px 10px !important;
+    font-size: 1rem !important;
+  }
+  #modalDescription {
+    font-size: 0.95rem !important;
+    margin-bottom: 18px !important;
+    padding-bottom: 10px !important;
+  }
+  #modalDescription:after {
+    width: 40px !important;
+    height: 2px !important;
+  }
+  .price-list:before {
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+  }
+  .price-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 10px 5px !important;
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+  }
+  .price-item strong {
+    font-size: 1rem !important;
+    margin-bottom: 2px !important;
+  }
+  .price-item span, .price-tag {
+    font-size: 1rem !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    margin-left: 0 !important;
+    margin-top: 2px !important;
+    display: block !important;
+    text-align: left !important;
+  }
+  .price-item .price-value {
+    font-size: 1rem !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    margin-left: 0 !important;
+    margin-top: 2px !important;
+    display: block !important;
+    text-align: left !important;
+  }
+}
